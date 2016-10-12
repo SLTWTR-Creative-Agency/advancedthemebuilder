@@ -17,6 +17,6 @@ Once you have the atb.liquid and atb-render.liquid files installed in your theme
 
 1.  Choose a template file.  (eg. product.liquid)
 2.  Insert the following code where you would like your zone. `{% include 'atb' zone:"First-Area"%}` 
-3.  Each zone is given a name such as *First-Area*.   Zone names must consist of only letters, numbers, and dashes.
+3.  Each zone is given a name such as *First-Area*.   Zone names may contain only letters, numbers, and dashes.
 
 
