@@ -1,5 +1,5 @@
 # Advanced Theme Builder
-Advanced theme builder is a modular content builder for Shopify themes.   
+Advanced theme builder is a modular content builder for Shopify themes.  It takes JSON data stored in Shopify metafields and renders HTML content based on section templates. 
 
 
 ## Installation
@@ -20,3 +20,121 @@ Once you have the atb.liquid and atb-render.liquid files installed in your theme
 3.  Insert the following code in your template file where you would like your custom content: `{% include 'atb' zone:"First-Area"%}` 
 
 
+## Create Your Own Section Templates
+
+### Schema
+
+Each section template contains a schema. 
+..* Schemas define section details such as name, descrtipion, tags, and icon.
+..* The schema id must match the file name - atb.{id}.liquid
+..* Here is a sample schema:
+`{
+  "name": "Repeater Demo",
+  "id": "repeater-demo",
+  "banner": "https://s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/6152/splash.png?1460647934",
+  "icon": "https://apps.sltwtr.com/advancedthemebuilder/atb/ui/offset.png",
+  "tags": "jquery, offset2, bootstrap",
+  "decsription": "this is the awesome offset block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "The title goes here",
+      "default": "Titlest"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Size",
+      "info": "How big?",
+      "default": "large",
+      "options": [
+        {
+          "value": "xx-small",
+          "label": "XX Small"
+        },
+        {
+          "value": "x-small",
+          "label": "X Small"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "x-large",
+          "label": "X Large"
+        },
+        {
+          "value": "xx-large",
+          "label": "XX Large"
+        }
+      ]
+    },
+    {
+      "type": "colorpicker",
+      "id": "color",
+      "label": "Color",
+      "default": "#FF0000",
+      "info": "This is the color"
+    },
+    {
+      "type": "image",
+      "id": "my_image",
+      "label": "Image",
+      "default": "",
+      "info": "Pick the best image"
+    },
+    {
+      "type": "product",
+      "id": "product1",
+      "label": "Product",
+      "default": "",
+      "info": "Pick a product",
+      "repeatable": true
+    },
+    {
+      "type": "page",
+      "id": "page1",
+      "label": "Page",
+      "default": "",
+      "info": "Pick a page"
+    },
+    {
+      "type": "collection",
+      "id": "collection1",
+      "label": "Collection",
+      "default": "",
+      "info": "Pick a collection"
+    },
+    {
+      "type": "image",
+      "id": "my_image2",
+      "label": "Image",
+      "default": "",
+      "info": "Pick the second best image"
+    },
+    {
+      "type": "textarea",
+      "id": "summary",
+      "label": "Summary",
+      "default": "Sum it up",
+      "info": "Summarize it"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description",
+      "info": "You can add html here"
+    }
+  ]
+}`
