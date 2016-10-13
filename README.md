@@ -29,8 +29,8 @@ Each section template contains a schema.
 1. Schemas define section details such as name, descrtipion, tags, and icon.
 2. The schema id must match the file name - atb.{id}.liquid
 3. Required schema attributes are:
-..* **name**  the name of your section 
-..* **id** unique id of your section - must match file name
+  + **name**  the name of your section 
+  + **id** unique id of your section - must match file name
 4. Here is a sample schema:
 ```json
 {
