@@ -25,10 +25,11 @@ Once you have the atb.liquid and atb-render.liquid files installed in your theme
 ### Schema
 
 Each section template contains a schema. 
-..* Schemas define section details such as name, descrtipion, tags, and icon.
-..* The schema id must match the file name - atb.{id}.liquid
-..* Here is a sample schema:
-`{
+1. Schemas define section details such as name, descrtipion, tags, and icon.
+2. The schema id must match the file name - atb.{id}.liquid
+3. Here is a sample schema:
+```json
+{
   "name": "Repeater Demo",
   "id": "repeater-demo",
   "banner": "https://s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/6152/splash.png?1460647934",
@@ -137,4 +138,5 @@ Each section template contains a schema.
       "info": "You can add html here"
     }
   ]
-}`
+}
+```
