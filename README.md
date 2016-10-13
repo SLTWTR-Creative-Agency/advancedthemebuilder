@@ -5,7 +5,7 @@ Advanced theme builder is a modular content builder for Shopify themes.  It take
 ## Installation
 
 ### Automatic
-1. Download install the Advanced Theme Builder app from the Shopify app store.
+1. [Download](https://apps.shopify.com/) install the Advanced Theme Builder app from the Shopify app store.
 
 ### Manual
 1. Copy the atb.liquid and atb-render.liquid into your Shopify theme snippets folder.
