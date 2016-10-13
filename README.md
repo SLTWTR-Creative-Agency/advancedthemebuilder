@@ -162,6 +162,7 @@ Each section template contains a schema.
 ```
 
 ** Rendering Variables
+
 1.  Add the following code above your html `{% include 'atb-render' field:'my_image' %}` where my_image is the id of an option.
 2.  In the next line, add `{% assign my_image = val %}`.  The previous line assigned our value to a variable called val.  Now we assign it val to a new variable with a proper descriptive name.
 3.  If the setting is *repeatable*, **val** will be an *array*.
