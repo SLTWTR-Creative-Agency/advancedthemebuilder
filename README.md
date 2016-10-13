@@ -35,7 +35,20 @@ Each section template contains a schema.
   + **icon** - the icon to be displayed in advanced theme builder
   + **tags** - tags are used for searching the section store
   + **description** - a helpful description of your app and included in app store search
-4. Here is a sample schema:
+  + **settings** - an array of variables used by your section
+4. Setting attributes are:
+  + **type** - Possible types are
+    - text
+    - textarea
+    - html
+    - select
+    - colorpicker
+    - image
+    - product
+    - page
+    - collection
+
+5. Here is a sample schema:
 ```json
 {
   "name": "Repeater Demo",
