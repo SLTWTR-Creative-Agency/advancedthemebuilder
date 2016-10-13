@@ -1,5 +1,5 @@
 # Advanced Theme Builder
-Advanced theme builder is a modular content creator for Shopify themes.   
+Advanced theme builder is a modular content builder for Shopify themes.   
 
 
 ## Installation
@@ -16,7 +16,7 @@ Advanced theme builder is a modular content creator for Shopify themes.
 Once you have the atb.liquid and atb-render.liquid files installed in your theme, you may begin adding zones to your theme template files. Page, article, product, and collection templates are eligible for zones.   
 
 1.  Choose a template file.  (eg. product.liquid)
-2.  Insert the following code where you would like your zone. `{% include 'atb' zone:"First-Area"%}` 
+2.  Insert the following code where you would like your zone: `{% include 'atb' zone:"First-Area"%}` 
 3.  Each zone is given a name such as *First-Area*.   Zone names may contain only letters, numbers, and dashes.
 
 
