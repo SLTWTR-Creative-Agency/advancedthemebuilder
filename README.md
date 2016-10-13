@@ -1,5 +1,5 @@
 # Advanced Theme Builder
-Advanced theme builder is a modular content builder for Shopify themes.  It takes JSON data stored in Shopify metafields and renders HTML content based on section templates. 
+Advanced theme builder is a modular content builder for Shopify themes.  It takes JSON data stored in Shopify metafields and renders HTML content based on section templates.  After installing the [Advanced Theme Builder] Shopify app, go to the [Advanced Theme Builder section store](http://apps.sltwtr.com/advancedthemebuilder/store/) to upload sections directly into your Shopify store.
 
 
 ## Installation
