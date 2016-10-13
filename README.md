@@ -25,6 +25,7 @@ Once you have the atb.liquid and atb-render.liquid files installed in your theme
 ### Schema
 
 Each section template contains a schema. 
+
 1. Schemas define section details such as name, descrtipion, tags, and icon.
 2. The schema id must match the file name - atb.{id}.liquid
 3. Here is a sample schema:
