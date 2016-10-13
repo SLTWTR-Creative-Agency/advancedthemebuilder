@@ -37,7 +37,7 @@ Each section template contains a schema.
   + **description** - a helpful description of your app and included in app store search
   + **settings** - an array of variables used by your section
 4. Setting attributes are:
-  + **type** - Possible types are
+  + **type** - the input type for the form input
     - text
     - textarea
     - html
@@ -47,6 +47,12 @@ Each section template contains a schema.
     - product
     - page
     - collection
+  + **id** - this will be the variable name
+  + **label** - input item label
+  + **info** - input item description
+  + **default** - default value 
+  + **repeatable** - true or false, value becomes an array
+  + **options** - select options (only for type select)
 
 5. Here is a sample schema:
 ```json
