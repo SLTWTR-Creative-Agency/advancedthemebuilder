@@ -170,3 +170,110 @@ ATB-SCHEMA{
 3.  If the setting is *repeatable*, **val** will be an *array*.
 4.  Product, collection, and page types return the handle or slug.   To obtain the entire product object from its handle, use all_products[handle].
 
+
+Here is a simple example Advanced Theme Builder section that adds a styled dividing line - atb.divider.liquid :
+
+```
+{% comment %}
+ATB-SCHEMA{
+	"name":"Dividing Line",
+	"id":"divider",
+	"price": 0,
+	"banner":"//i.imgur.com/OcChZrR.png",
+	"icon": "//i.imgur.com/ba3VsGM.png",
+	"screenshots" : [
+		"//i.imgur.com/OcChZrR.png",
+		"//i.imgur.com/OcChZrR.png",
+		"//i.imgur.com/OcChZrR.png"
+	],
+	"video" : "//player.vimeo.com/video/180350618",
+	"tags": "divider,hr,universal,html",
+	"description": "Separate your content with a dividing line.",
+	"long_description": "Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line. Separate your content with a dividing line.",
+	"settings":[
+		{ 
+			"id" : "color",
+			"label" : "Line Color",
+			"default" : "#000000",
+			"info" : "Select a color for the dividing line",
+			"type" : "colorpicker"
+		},
+		{ 
+			"id" : "thickness",
+			"label" : "Line Thickness",
+			"info" : "Define line thickness",
+			"default" : "1px",
+			"options": [
+				{
+					"label": "1pt",
+					"value": "1px"
+				},
+				{
+					"label": "2pt",
+					"value": "2px"
+				},
+				{
+					"label": "3pt",
+					"value": "3px"
+				},
+				{
+					"label": "4pt",
+					"value": "4px"
+				},
+				{
+					"label": "5pt",
+					"value": "5px"
+				},
+				{
+					"label": "10pt",
+					"value": "10px"
+				}
+			],
+			"type" : "select"
+		},
+		{ 
+			"id" : "width",
+			"label" : "Divider Width",
+			"default" : "90%",
+			"info" : "Select a width for the dividing line",
+			"type" : "select",
+			"options": [
+				{
+					"label": "25%",
+					"value": "25%"
+				},
+				{
+					"label": "50%",
+					"value": "50%"
+				},
+				{
+					"label": "75%",
+					"value": "75%"
+				},
+				{
+					"label": "90%",
+					"value": "90%"
+				},
+				{
+					"label": "100%",
+					"value": "100%"
+				}
+			]
+		}
+	]
+}ATB-SCHEMA
+{% endcomment %}
+
+{% include 'atb-render' field:'color' %}
+{% assign color = val %}
+
+{% include 'atb-render' field:'thickness' %}
+{% assign thickness = val %}
+
+{% include 'atb-render' field:'width' %}
+{% assign width = val %}
+
+<hr style="border-bottom:{{color}} {{thickness}} solid; height:0px;border-top:none;width:{{width}}; margin-left:auto;margin-right:auto;"/>
+
+
+```
