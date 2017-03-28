@@ -56,7 +56,8 @@ Each section template contains a schema.
 
 5. Here is a sample schema:
 ```json
-{
+{% comment %}
+ATB-SCHEMA{
   "name": "Repeater Demo",
   "id": "repeater-demo",
   "banner": "https://s3.amazonaws.com/shopify-app-store/shopify_applications/small_banners/6152/splash.png?1460647934",
@@ -158,7 +159,8 @@ Each section template contains a schema.
       "info": "You can add html here"
     }
   ]
-}
+}ATB-SCHEMA
+{% endcomment %}
 ```
 
 ## Rendering Variables
