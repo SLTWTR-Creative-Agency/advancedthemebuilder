@@ -170,7 +170,7 @@ ATB-SCHEMA{
 3.  If the setting is *repeatable*, **val** will be an *array*.
 4.  Product, collection, and page types return the handle or slug.   To obtain the entire product object from its handle, use all_products[handle].
 
-
+## Example
 Here is a simple example Advanced Theme Builder section that adds a styled dividing line - atb.divider.liquid :
 
 ```
@@ -275,5 +275,12 @@ ATB-SCHEMA{
 
 <hr style="border-bottom:{{color}} {{thickness}} solid; height:0px;border-top:none;width:{{width}}; margin-left:auto;margin-right:auto;"/>
 
+```
 
+### Repeaters
+
+Any fields can be included in repeating groups by adding a repeatable repeatable property to the field and giving it a name.
+
+```
+repeatable: 'groupname'
 ```
