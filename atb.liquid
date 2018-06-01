@@ -1,1 +1,108 @@
-{% assign delim = "||" %}{% assign array_delim = "^^" %}{% comment %} IDENTIFY ENTITY {% endcomment %}{% assign entity = template | split: '.' | first %}{% if entity == 'page' %}{% assign _atb = page.metafields.atb %}{% elsif entity == 'product' %}{% assign _atb = product.metafields.atb %}{% elsif entity == 'collection' %}{% assign _atb = collection.metafields.atb %}{% elsif entity == 'article' %}{% assign _atb = article.metafields.atb %}{% endif%}{% comment %} PULL FROM METAFIELDS {% endcomment %}{% assign json_string = _atb.sections %}{% comment %} CLEANUP {% endcomment %}{% assign json_string = json_string | replace: '\"', '&quot;' %}{% assign json_string = json_string | replace: '\}', '' %}{% assign json_string = json_string | replace: '\{', '' %}{% assign blocks_string_array = json_string | split: '},{' %}{% for block_string in blocks_string_array %}{% comment %} EACH BLOCK {% endcomment %}{% comment %} CREATE STRINGS {% endcomment %}{% assign keys_string = '' %}{% assign vals_string = '' %}{% assign nodes_array = block_string | split: ',"' %}{% assign part_of_array = false %}{% assign array_string = '' %}{% assign array_key = '' %}{% for node_string in nodes_array %}{% assign node_array = node_string | split: '":' %}{% if part_of_array %}{% assign valq = node_array[0]%}{% assign val =  valq | replace: '"'%}{% if val contains ']' %}{% assign part_of_array = false %}{%endif%}{% assign val =  val | replace: '"', '' | replace: ']', '' | replace: '[', ''  %}{% assign array_string = array_string | append: val | append: array_delim %}{% else %}{% assign keyq = node_array[0]%}{% assign valq = node_array[1]%}{% assign key =  keyq | replace: '"', '' %}{% assign val =  valq | replace: '"', '' | replace: '[', '' | | replace: ']', ''  %}{% if key contains '[]' %}{% assign part_of_array = true %}{% assign array_key = key %}{% assign array_string = array_string | append: val | append: array_delim %}{% comment %}{% assign key =  key | replace: '[]', '' %}{% endcomment %}{%endif%}{%endif%}{% if part_of_array %}{% else %}{% if array_string != '' %}{% assign val = array_string %}{% assign key = array_key %}{% assign array_string = '' %}{% assign array_key = '' %}{%endif%}{% assign keys_string = keys_string | append: key | append: delim %}{% assign vals_string = vals_string | append: val | append: delim %}{%endif%}{% endfor %}{% assign keys_array = keys_string | split: delim %}{% assign vals_array = vals_string | split: delim %}{% assign index = 0 %}{% for key in keys_array %}{% if key == '_zone' %}{% assign block_zone = vals_array[index] %}{% endif %}{% if key == '_template' %}{% assign template = vals_array[index] | prepend: 'atb.' %}{% endif %}{% assign index = index | plus: 1 %}{% endfor %}{% if block_zone == zone %}{% include template keys: keys_array vals: vals_array %}{% endif %}{% endfor %}
+{% assign delim = "||" %}
+{% assign array_delim = "^^" %}
+
+{% comment %} IDENTIFY ENTITY {% endcomment %}
+{% assign entity = template | split: '.' | first %}
+
+
+{% if entity == 'page' %}
+	{% assign _atb = page.metafields.atb %}
+{% elsif entity == 'product' %}
+	{% assign _atb = product.metafields.atb %}
+{% elsif entity == 'collection' %}
+	{% assign _atb = collection.metafields.atb %}
+{% elsif entity == 'article' %}
+	{% assign _atb = article.metafields.atb %}
+{% elsif entity == 'blog' %}
+	{% assign _atb = blog.metafields.atb %}
+{% endif%}
+
+{% comment %} PULL FROM METAFIELDS {% endcomment %}
+
+{% assign json_string = _atb.sections %}
+
+{% comment %} CLEANUP {% endcomment %}
+
+{% assign json_string = json_string | replace: '\"', '&quot;' %}
+{% assign json_string = json_string | replace: '\}', '' %}
+{% assign json_string = json_string | replace: '\{', '' %}
+
+{% assign blocks_string_array = json_string | split: '},{' %}
+
+
+{% for block_string in blocks_string_array %}
+
+	{% comment %} EACH BLOCK {% endcomment %}
+
+	{% comment %} CREATE STRINGS {% endcomment %}
+	{% assign keys_string = '' %}
+	{% assign vals_string = '' %}
+
+
+	{% assign nodes_array = block_string | split: ',"' %}
+
+
+	{% assign part_of_array = false %}
+	{% assign array_string = '' %}
+	{% assign array_key = '' %}
+
+	{% for node_string in nodes_array %}
+
+		{% assign node_array = node_string | split: '":' %}
+			{% if part_of_array %}
+				{% assign valq = node_array[0]%}
+				{% assign val =  valq | replace: '"'%}
+				{% if val contains ']' %}
+					{% assign part_of_array = false %}
+				{%endif%}
+				{% assign val =  val | replace: '"', '' | replace: ']', '' | replace: '[', '' | replace: '}', ''  %}
+				{% assign array_string = array_string | append: val | append: array_delim %}
+			{% else %}
+
+				{% assign keyq = node_array[0]%}
+				{% assign valq = node_array[1]%}
+				{% assign key =  keyq | replace: '"', '' %}
+				{% assign val =  valq | replace: '"', '' | replace: '[', '' | replace: ']', '' | replace: '}', ''  %}
+
+				{% if key contains '[]' %}
+					{% assign part_of_array = true %}
+					{% assign array_key = key %}
+					{% assign array_string = array_string | append: val | append: array_delim %}
+					{% if valq contains ']' %}
+						{% assign part_of_array = false %}
+					{%endif%}
+				{%endif%}
+			{%endif%}
+
+			{% if part_of_array %}
+			{% else %}
+				{% if array_string != '' %}
+					{% assign val = array_string %}
+					{% assign key = array_key %}
+					{% assign array_string = '' %}
+					{% assign array_key = '' %}
+				{%endif%}
+				{% assign keys_string = keys_string | append: key | append: delim %}
+				{% assign vals_string = vals_string | append: val | append: delim %}
+			{%endif%}
+	{% endfor %}
+
+	{% assign keys_array = keys_string | split: delim %}
+  {% assign vals_string = vals_string | replace: '&quot;', '"' %}
+	{% assign vals_array = vals_string | split: delim %}
+
+	{% assign index = 0 %}
+	{% for key in keys_array %}
+		{% if key == '_zone' %}
+			{% assign block_zone = vals_array[index] %}
+		{% endif %}
+		{% if key == '_template' %}
+			{% assign atb_template = vals_array[index] | prepend: 'atb.' %}
+		{% endif %}
+	{% assign index = index | plus: 1 %}
+	{% endfor %}
+
+	{% if block_zone == zone %}
+		{% include atb_template keys: keys_array vals: vals_array %}
+	{% endif %}
+{% endfor %}
