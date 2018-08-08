@@ -1,11 +1,11 @@
-# Advanced Theme Builder
-Advanced theme builder is a modular content builder for Shopify themes.  It takes JSON data stored in Shopify metafields and renders HTML content based on section templates.  After installing the [Advanced Theme Builder](https://apps.shopify.com/) Shopify app, go to the [Advanced Theme Builder section store](http://apps.sltwtr.com/advancedthemebuilder/store/) to upload sections directly into your Shopify store.
+# Sections Anywhere
+Sections Anywhere is a modular content builder for Shopify themes.  It takes JSON data stored in Shopify metafields and renders HTML content based on section templates.  After installing the [Sections Anywhere](https://apps.shopify.com/) Shopify app, go to the [Sections Anywhere section store](http://apps.sltwtr.com/advancedthemebuilder/store/) to upload sections directly into your Shopify store.
 
 
 ## Installation
 
 ### Automatic
-1. [Download](https://apps.shopify.com/) install the Advanced Theme Builder app from the Shopify app store.
+1. [Download](https://apps.shopify.com/) install the Sections Anywhere app from the Shopify app store.
 
 ### Manual
 1. Copy the atb.liquid and atb-render.liquid into your Shopify theme snippets folder.
@@ -32,7 +32,7 @@ Each section template contains a schema.
   + **name** - the name of your section 
   + **id** - unique id of your section - must match file name
   + **banner** - banner image used in the section store
-  + **icon** - the icon to be displayed in advanced theme builder
+  + **icon** - the icon to be displayed in Sections Anywhere
   + **tags** - tags are used for searching the section store
   + **description** - a helpful description of your app and included in app store search
   + **settings** - an array of variables used by your section
@@ -171,7 +171,7 @@ ATB-SCHEMA{
 4.  Product, collection, and page types return the handle or slug.   To obtain the entire product object from its handle, use all_products[handle].
 
 ## Example
-Here is a simple example Advanced Theme Builder section that adds a styled dividing line - atb.divider.liquid :
+Here is a simple example Sections Anywhere section that adds a styled dividing line - atb.divider.liquid :
 
 ```
 {% comment %}
